@@ -1,10 +1,10 @@
 ---
-- name: Install Python on older RHEL systems
+- name: Install Python on RHEL7 servers
   hosts: all
   gather_facts: false
   become: true
 
   tasks:
 
-    - name: Install Python3
-      raw: yum install -y python3
+    - name: Install Python
+      raw: yum install -y python
