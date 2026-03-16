@@ -1,4 +1,3 @@
-```yaml
 ---
 - name: Check storage usage on servers
   hosts: all
@@ -12,4 +11,4 @@
     - name: Display disk usage
       debug:
         var: disk_usage.stdout_lines
-```
+
