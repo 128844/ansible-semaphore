@@ -2,13 +2,13 @@
 - name: Check storage usage on servers
   hosts: all
   become: true
+
   tasks:
-
     - name: Check root disk usage
-  shell: df -h / | awk 'NR==2 {print $5}' | sed 's/%//'
-  register: root_usage
+      shell: df -h / | awk 'NR==2 {print $5}' | sed 's/%//'
+      register: root_usage
 
-- name: Fail if disk usage above 80%
-  fail:
-    msg: "Disk usage above 80%"
-  when: root_usage.stdout|int > 80
+    - name: Fail if disk usage above 80%
+      fail:
+        msg: "Disk usage above 80%"
+      when: root_usage.stdout | int > 80
