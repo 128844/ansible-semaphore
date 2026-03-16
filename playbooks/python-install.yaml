@@ -1,8 +1,10 @@
 ---
-- name: Install Python on new servers
+- name: Install Python on older RHEL systems
   hosts: all
   gather_facts: false
+  become: true
+
   tasks:
 
-    - name: Install Python
-      raw: sudo apt update && sudo apt install -y python3
+    - name: Install Python3
+      raw: yum install -y python3
