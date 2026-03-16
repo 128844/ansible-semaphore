@@ -14,7 +14,7 @@
         state: present
 
     - name: Ensure Nginx service is running and enabled
-      service:
+      systemd:
         name: nginx
         state: started
         enabled: yes
