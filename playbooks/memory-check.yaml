@@ -6,6 +6,7 @@
   tasks:
     - name: Get memory usage
       shell: free -mh | awk 'NR==2 {printf "%.2f", $3*100/$2 }'
+      shell: free -mh | awk 'NR==3 {printf "%.2f", $3*100/$2 }'
       register: memory_usage
 
     
