@@ -1,0 +1,19 @@
+---
+- name: Check memory usage on servers
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Get memory usage
+      shell: free -mh | awk 'NR==2 {printf "%.2f", $3*100/$2 }'
+      register: memory_usage
+
+    - name: Show memory usage
+      debug:
+        msg: "Memory usage is {{ memory_usage.stdout }}%"
+
+    - name: Fail if memory usage above 80%
+      fail:
+        msg: "Memory usage is above 80%"
+      when: memory_usage.stdout | float > 80
+```
