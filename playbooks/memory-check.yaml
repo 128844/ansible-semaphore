@@ -5,13 +5,4 @@
 
   tasks:
     - name: Get RAM usage
-      shell: free -m | awk 'NR==2 {printf "%.2f", $3*100/$2 }'
-      register: ram_usage
-
-    - name: Get Swap usage
-      shell: free -m | awk 'NR==3 {printf "%.2f", $3*100/$2 }'
-      register: swap_usage
-
-    - name: Show memory usage
-      debug:
-        msg: "RAM: {{ ram_usage.stdout }}% | Swap: {{ swap_usage.stdout }}%"
+      shell: free -mh
